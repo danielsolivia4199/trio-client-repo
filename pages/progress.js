@@ -1,7 +1,4 @@
-import { useAuth } from '../utils/context/authContext';
-
-function Home() {
-  const { user } = useAuth();
+function Progress() {
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -12,9 +9,9 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <p>Start a new trio, {user.name}!</p>
+      <p>progress page</p>
     </div>
   );
 }
 
-export default Home;
+export default Progress;
