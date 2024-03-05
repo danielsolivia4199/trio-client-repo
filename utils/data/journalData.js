@@ -14,11 +14,12 @@ const getSingleJournal = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createJournal = (journal, userId) => new Promise((resolve, reject) => {
+const createJournal = (journal, user) => new Promise((resolve, reject) => {
   const payload = {
     ...journal,
-    user: userId,
+    user,
   };
+  console.log('Final payload being sent:', JSON.stringify(payload));
   fetch(`${clientCredentials.databaseURL}/journals`, {
     method: 'POST',
     headers: {
@@ -26,9 +27,19 @@ const createJournal = (journal, userId) => new Promise((resolve, reject) => {
     },
     body: JSON.stringify(payload),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        console.log('Final payload being sent:', JSON.stringify(payload));
+        console.error('Server responded with an error status:', response.status);
+        return response.json().then((errorData) => reject(errorData));
+      }
+      return response.json();
+    })
     .then((data) => resolve(data))
-    .catch(reject);
+    .catch((error) => {
+      console.error('Fetch error:', error);
+      reject(error);
+    });
 });
 
 export {

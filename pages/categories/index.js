@@ -17,7 +17,7 @@ function Goal() {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>goals</h1>
+      <h1 style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>categories</h1>
       <article className="goals">
         {goals?.map((goal) => (
           <section key={`goal--${goal.id}`} className="goal">

@@ -32,6 +32,10 @@ const createGoal = (goal, userId) => new Promise((resolve, reject) => {
 });
 
 const updateGoal = (payload, uid) => new Promise((resolve, reject) => {
+  if (!payload.id) {
+    console.error('Goal ID is undefined, cannot update goal.');
+    return;
+  }
   const updatedPayload = {
     ...payload,
     user: payload.user || uid,
@@ -71,6 +75,21 @@ const deleteGoal = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const completeGoal = async (goalId) => {
+  const response = await fetch(`${clientCredentials.databaseURL}/goals/${goalId}/complete-goal`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to complete goal');
+  }
+
+  return response.json();
+};
+
 export {
-  getGoals, getSingleGoal, createGoal, updateGoal, deleteGoal,
+  getGoals, getSingleGoal, createGoal, updateGoal, deleteGoal, completeGoal,
 };
