@@ -4,19 +4,56 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "joly-display", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  background-color: #ffffff; 
+  color: #060606;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+
+.journal-card {
+  gap: 20px;
+  margin-bottom: 10px;
+  padding: 30px;
 }
 
-* {
-  box-sizing: border-box;
+.task-card {
+  gap: 20px;
+  margin-bottom: 10px;
 }
 
-body {
-  background-color: rgb(211, 215, 211);
+.goal-card {
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+
+.changegoalbtn {
+  margin-left: 20px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.task-cards, .task {
+  flex: 1;
+  min-width: 250px; 
+  max-height: 200px;
+  margin-bottom: 30px;
+}
+
+.header-container {
+  margin-top: 20px;
+  margin-bottom: 60px;
+  text-align: center; /* Centers the content for the trio section */
+
+}
+
+
+.trio-content {
+  text-align: center; /* Centers the content for the trio section */
 }

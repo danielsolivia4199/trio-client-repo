@@ -5,12 +5,12 @@ import Link from 'next/link';
 
 export default function JournalCard({ journalObj }) {
   return (
-    <Card className="journal-card">
+    <Card className="journal-card text-light bg-dark">
       <Card.Header>entry #{journalObj.id}</Card.Header>
       <Card.Text>{journalObj.goal.goal}</Card.Text>
       <Card.Text>{new Date(journalObj.goal.goal_created).toLocaleDateString()}-{new Date(journalObj.goal.completed_on).toLocaleDateString()}</Card.Text>
       <Link href={`/journal/${journalObj.id}`} passHref>
-        <Button variant="danger" as="a" style={{ marginRight: '4px' }}>Details</Button>
+        <Button variant="outline-dark">Details</Button>
       </Link>
     </Card>
   );

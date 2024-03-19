@@ -151,7 +151,7 @@ const JournalEntryForm = ({ show, onHide, categoryId }) => {
               placeholder="Considering your entire journey towards this goal, what is your biggest takeaway?"
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button style={{ marginTop: '20px', marginBottom: '10px' }} variant="outline-dark" type="submit">
             Submit Entry
           </Button>
         </Form>

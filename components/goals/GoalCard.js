@@ -13,7 +13,7 @@ export default function GoalCard({ goalObj }) {
           <Card.Text>Created On: {new Date(goalObj.goal_created).toLocaleDateString()}</Card.Text>
         )}
         <Link href={`/categories/${goalObj.id}`} passHref>
-          <Button variant="danger" as="a" style={{ marginRight: '4px' }}>Details</Button>
+          <Button variant="outline-dark" as="a" style={{ marginRight: '4px' }}>Details</Button>
         </Link>
       </Card.Body>
     </Card>

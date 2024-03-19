@@ -42,20 +42,29 @@ const Home = () => {
   };
 
   return (
-    <div className="text-center">
-      <p>Welcome, {user.name}!</p>
-      <Button onClick={handleGenerateTrio}>Generate Trio</Button>
-      {trioTasks.length > 0 && (
-        <>
-          <div>
-            <h2>Your Trio Tasks</h2>
-            {trioTasks.map((task) => (
-              <TaskCard key={task.id} taskObj={task} />
-            ))}
-          </div>
+    <div>
+      <div className="header-container">
+        <h2 className="welcome-message">Welcome, {user.name}!</h2>
+      </div>
+      <div className="trio-content text-center">
+        {trioTasks.length === 0 ? (
+          <Button variant="outline-dark" onClick={handleGenerateTrio}>Generate Trio</Button>
+        ) : (
           <Button variant="success" onClick={handleCompleteTrio}>Complete Trio Tasks</Button>
-        </>
-      )}
+        )}
+        {trioTasks.length > 0 && (
+          <>
+            <h1 style={{ marginTop: '30px' }}>Your Current Trio Tasks</h1>
+            <div className="tasks-container">
+              {trioTasks.map((task) => (
+                <div style={{ maxWidth: '500px', margin: '0 auto' }} key={task.id}>
+                  <TaskCard taskObj={task} />
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

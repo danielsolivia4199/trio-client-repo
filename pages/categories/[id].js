@@ -110,19 +110,21 @@ const GoalDetails = () => {
   return (
     <>
       <div>
-        <h2>{goalDetails.category.category_name}</h2>
-        <h1>{goalDetails.goal ? goalDetails.goal : 'Focused on tasks: No specific goal set.'}</h1>
-        <Button variant="success" onClick={() => completeGoalHandler(goalDetails.id)}>
-          Complete and Log Goal
-        </Button>
-        <JournalEntryModal
-          show={showJournalModal}
-          onHide={() => setShowJournalModal(false)}
-          onSubmit={handleJournalSubmit}
-          categoryId={goalDetails.category.id}
-        />
-        <Button variant="primary" onClick={toggleModal}>Change Goal</Button>
-        <Modal show={showModal} onHide={toggleModal}>
+        <h1 style={{ marginTop: '30px', marginBottom: '10px' }}>{goalDetails.category.category_name}</h1>
+        <h2>{goalDetails.goal ? goalDetails.goal : 'Focused on tasks: No specific goal set.'}</h2>
+        <div className="home-btn">
+          <Button variant="success" onClick={() => completeGoalHandler(goalDetails.id)}>
+            Complete and Log Goal
+          </Button>
+          <JournalEntryModal
+            show={showJournalModal}
+            onHide={() => setShowJournalModal(false)}
+            onSubmit={handleJournalSubmit}
+            categoryId={goalDetails.category.id}
+          />
+          <Button className="changegoalbtn" variant="outline-dark" onClick={toggleModal}>Change Goal</Button>
+        </div>
+        <Modal className="modal" show={showModal} onHide={toggleModal}>
           <Modal.Header closeButton>
             <Modal.Title>New {goalDetails.category.category_name} Goal</Modal.Title>
           </Modal.Header>
@@ -137,42 +139,48 @@ const GoalDetails = () => {
                   onChange={(e) => setEditableGoal(e.target.value)}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button style={{ textAlign: 'center', marginTop: '20px', marginBottom: '10px' }} variant="outline-dark" type="submit">
                 Save Changes
               </Button>
             </Form>
           </Modal.Body>
         </Modal>
         <article className="tasks">
-          <h2>to-do</h2>
-          {tasks.filter((task) => !task.complete).map((task) => (
-            <section key={`task--${task.id}`} className="task">
-              <TaskCard
-                taskObj={task}
-                onUpdate={() => getTasksByCategory(categoryId)}
-                onEdit={handleEditTask}
-                onDelete={handleDeleteTask}
-                onComplete={handleCompleteTask}
-              />
-            </section>
-          ))}
+          <h2 className="task-header" style={{ textAlign: 'center', marginTop: '30px', marginBottom: '20px' }}>to-do</h2>
+          <div className="grid">
+            {tasks.filter((task) => !task.complete).map((task) => (
+              <section key={`task--${task.id}`} className="task-cards">
+                <TaskCard
+                  taskObj={task}
+                  onUpdate={() => getTasksByCategory(categoryId)}
+                  onEdit={handleEditTask}
+                  onDelete={handleDeleteTask}
+                  onComplete={handleCompleteTask}
+                />
+              </section>
+            ))}
+          </div>
         </article>
-        <Link href={`/tasks/new?categoryId=${categoryId}`} passHref>
-          <Button variant="danger" type="button" size="lg" className="home-btn">Add Task</Button>
-        </Link>
+        <div className="home-btn">
+          <Link href={`/tasks/new?categoryId=${categoryId}`} passHref>
+            <Button variant="outline-dark" type="button" size="lg" className="home-btn" style={{ justifyContent: 'center', marginTop: '30px', marginBottom: '20px' }}>Add Task</Button>
+          </Link>
+        </div>
         <article className="tasks">
-          <h2>completed tasks</h2>
-          {tasks.filter((task) => task.complete).map((task) => (
-            <section key={`task--${task.id}`} className="task">
-              <TaskCard
-                taskObj={task}
-                onUpdate={() => getTasksByCategory(categoryId)}
-                onEdit={handleEditTask}
-                onDelete={handleDeleteTask}
-                onComplete={handleCompleteTask}
-              />
-            </section>
-          ))}
+          <h2 className="task-header" style={{ textAlign: 'center', marginTop: '30px', marginBottom: '20px' }}>completed tasks</h2>
+          <div className="grid">
+            {tasks.filter((task) => task.complete).map((task) => (
+              <section key={`task--${task.id}`} className="task">
+                <TaskCard
+                  taskObj={task}
+                  onUpdate={() => getTasksByCategory(categoryId)}
+                  onEdit={handleEditTask}
+                  onDelete={handleDeleteTask}
+                  onComplete={handleCompleteTask}
+                />
+              </section>
+            ))}
+          </div>
         </article>
       </div>
     </>
