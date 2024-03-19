@@ -57,7 +57,7 @@ const TaskForm = ({ taskObj = {} }) => {
     return () => {
       isMounted = false;
     };
-  }, [categoryId, taskObj, getCategories, currentTask.category]); // Ensure all used variables are in the dependency array
+  }, [categoryId, taskObj, currentTask.category]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

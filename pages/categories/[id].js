@@ -163,7 +163,7 @@ const GoalDetails = () => {
         </article>
         <div className="home-btn">
           <Link href={`/tasks/new?categoryId=${categoryId}`} passHref>
-            <Button variant="outline-dark" type="button" size="lg" className="home-btn" style={{ justifyContent: 'center', marginTop: '30px', marginBottom: '20px' }}>Add Task</Button>
+            <Button variant="outline-dark" type="button" size="lg" className="home-btn" style={{ marginTop: '30px', marginBottom: '20px' }}>Add Task</Button>
           </Link>
         </div>
         <article className="tasks">

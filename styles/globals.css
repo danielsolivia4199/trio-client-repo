@@ -39,12 +39,21 @@ body {
   gap: 20px;
 }
 
-.task-cards, .task {
+.task-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 250px; 
+  min-height: 200px;
+}
+
+.task {
   flex: 1;
   min-width: 250px; 
   max-height: 200px;
   margin-bottom: 30px;
 }
+
 
 .header-container {
   margin-top: 20px;
@@ -53,7 +62,15 @@ body {
 
 }
 
-
 .trio-content {
   text-align: center; /* Centers the content for the trio section */
+}
+
+.mb-3 {
+  margin-bottom: 20px;
+}
+
+.tasks-container {
+  padding-bottom: 100px;
+  margin-bottom: 100px;
 }

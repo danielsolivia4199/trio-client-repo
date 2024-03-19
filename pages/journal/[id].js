@@ -1,4 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
+import { Card, ListGroup } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { getSingleJournal } from '../../utils/data/journalData';
 
@@ -32,25 +34,33 @@ const JournalDetails = () => {
   }
 
   return (
-    <div>
-      <h1>entry #{journalDetails.id}</h1>
-      <h2>Goal: {journalDetails.goal.goal}</h2>
-      <p>My initial thoughts: {journalDetails.initial_thoughts}</p>
+    <div className="my-4">
+      <Card className="mb-3">
+        <Card.Header as="h1">Entry #{journalDetails.id}</Card.Header>
+        <Card.Body>
+          <Card.Title as="h2">Goal: {journalDetails.goal.goal}</Card.Title>
+          <Card.Text>My initial thoughts: {journalDetails.initial_thoughts}</Card.Text>
+        </Card.Body>
+      </Card>
       {journalDetails.hardest_tasks && (
-        <>
-          <h3>Hardest Tasks:</h3>
-          <ul>
+        <Card className="mb-3">
+          <Card.Header as="h3">Hardest Tasks</Card.Header>
+          <ListGroup variant="flush">
             {journalDetails.hardest_tasks.map((task, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <li key={index}>{task.task}</li>
+              <ListGroup.Item key={index}>{task.task}</ListGroup.Item>
             ))}
-          </ul>
-        </>
+          </ListGroup>
+        </Card>
       )}
-      <p>Task Reflection: {journalDetails.task_reflection}</p>
-      <p>What I learned: {journalDetails.learned}</p>
-      <p>What I would do differently: {journalDetails.do_differently}</p>
-      <p>My biggest take away: {journalDetails.take_away}</p>
+      <Card className="mb-3">
+        <Card.Body>
+          <Card.Text>Task Reflection: {journalDetails.task_reflection}</Card.Text>
+          <Card.Text>Learned: {journalDetails.learned}</Card.Text>
+          <Card.Text><strong>What I would do differently:</strong> {journalDetails.do_differently}
+          </Card.Text>
+          <Card.Text>Biggest take away: {journalDetails.take_away}</Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   );
 };

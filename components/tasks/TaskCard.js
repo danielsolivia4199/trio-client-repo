@@ -17,7 +17,7 @@ const TaskCard = ({
         <Card.Text>Difficulty: {taskObj.difficulty}</Card.Text>
         <Card.Text>{taskObj.category.category_name}</Card.Text>
         {!taskObj.complete && !taskObj.trio && (
-          <div className="d-flex justify-content-between">
+          <div>
             <div>
               <Button variant="outline-dark" onClick={handleEdit}>Edit</Button>
               <Button variant="outline-dark" onClick={handleDelete}>Delete</Button>

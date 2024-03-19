@@ -50,14 +50,14 @@ const Home = () => {
         {trioTasks.length === 0 ? (
           <Button variant="outline-dark" onClick={handleGenerateTrio}>Generate Trio</Button>
         ) : (
-          <Button variant="success" onClick={handleCompleteTrio}>Complete Trio Tasks</Button>
+          <Button variant="success" onClick={handleCompleteTrio}>Complete Trio</Button>
         )}
         {trioTasks.length > 0 && (
           <>
-            <h1 style={{ marginTop: '30px' }}>Your Current Trio Tasks</h1>
-            <div className="tasks-container">
+            <h1 style={{ marginTop: '20px' }}>Your Current Trio Tasks</h1>
+            <div className="tasks-container" style={{ paddingBottom: '50px', marginBottom: '50px' }}>
               {trioTasks.map((task) => (
-                <div style={{ maxWidth: '500px', margin: '0 auto' }} key={task.id}>
+                <div style={{ maxWidth: '500px', margin: '0 auto', marginBottom: '10px' }} key={task.id}>
                   <TaskCard taskObj={task} />
                 </div>
               ))}
